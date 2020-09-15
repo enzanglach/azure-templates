@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RG1=autoscale
+RG1=rg1
 RG2=autoscale_ne
 LOC1=westeurope
 LOC2=northeurope
@@ -11,9 +11,19 @@ LOC2=northeurope
 
 VMWEBRG=autoscale
 
-az deployment group create --resource-group $VMWEBRG \
-  --template-file /mnt/c/GitHub/flask_note_jam/arm_vmweb_template.json \
-  --parameters /mnt/c/GitHub/flask_note_jam/arm_vmweb_template.parameters.json
+az group create --name $RG1 --location $LOC1
+
+az deployment group create --resource-group $RG1 \
+  --template-file arm_vm_linux_template.json \
+  --parameters arm_vm_linux_template.parameters.json
+
+az deployment group create --resource-group $RG1 \
+  --template-file arm_vm_linux_template.json \
+  --parameters arm_vm_linux_template-ubuntu18.parameters.json
+
+az deployment group create --resource-group $RG1 \
+  --template-file arm_vm_linux_template.json \
+  --parameters arm_vm_linux_template-debian9.parameters.json
 
 az sig image-version create \
    --resource-group $RG1 \

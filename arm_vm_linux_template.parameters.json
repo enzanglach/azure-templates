@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualMachine_name": {
-            "value": "vmweb"
+            "value": "vmdeb10"
         },
         "virtualNetwork_name": {
-            "value": "vnet02"
+            "value": "vnet01"
         },
         "subnet_name": {
-            "value": "vm_subnet"
+            "value": "default"
         }
     }
 }

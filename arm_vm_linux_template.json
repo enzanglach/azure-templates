@@ -29,6 +29,42 @@
             "metadata": {
                 "description": "Name of the subnet in the virtual network"
             }
+        },
+         "imagePublisher": {
+            "type": "string",
+            "defaultValue": "Canonical",
+            "allowedValues": [
+                "Canonical",
+                "debian"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
+        },
+         "imageOffer": {
+            "type": "string",
+            "defaultValue": "UbuntuServer",
+            "allowedValues": [
+                "UbuntuServer",
+                "debian-10",
+                "debian-9"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
+        },
+         "imageSku": {
+            "type": "string",
+            "defaultValue": "18.04-LTS",
+            "allowedValues": [
+                "16.04.0-LTS",
+                "18.04-LTS",
+                "10",
+                "9"
+            ],
+            "metadata": {
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+            }
         }
     },
     "variables": {
@@ -95,9 +131,9 @@
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "publisher": "debian",
-                        "offer": "debian-10",
-                        "sku": "10",
+                        "publisher": "[parameters('imagePublisher')]",
+                        "offer": "[parameters('imageOffer')]",
+                        "sku": "[parameters('imageSku')]",
                         "version": "latest"
                     },
                     "osDisk": {
