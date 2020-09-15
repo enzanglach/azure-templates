@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachine_name": {
+            "value": "vmubuntu18"
+        },
+        "virtualNetwork_name": {
+            "value": "vnet01"
+        },
+        "subnet_name": {
+            "value": "default"
+        },
+        "imagePublisher": {
+            "value": "Canonical"
+        },
+        "imageOffer": {
+            "value": "UbuntuServer"
+        },
+        "imageSku": {
+            "value": "18.04-LTS"
+        }
+    }
+}
